@@ -1,0 +1,43 @@
+import React from 'react';
+// import { Keyboard } from 'react-native';
+
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
+import { Background } from '../../components/Background';
+import {
+  Easy,
+  Usuario,
+  UsuarioInput,
+  Senha,
+  SenhaInput,
+  Entrar,
+  BotaoTexto,
+} from './styles';
+
+export default function Login({ navigation }) {
+  return (
+    <Background>
+      <Easy>Easy</Easy>
+      <Usuario>
+        <Icon name="mail-outline" size={20} color="#000" />
+        <UsuarioInput
+          keyboardType="email-address" // adiciona @ e .com automaticamente
+          autoCorrect={false} // não corrige o email automaticamente
+          autoCapitalize="none" // não coloca letra maiúscula
+          placeholder="Nome de usuário ou email"
+        />
+      </Usuario>
+
+      <Senha>
+        <Icon name="lock-outline" size={20} color="#000" />
+        <SenhaInput
+          secureTextEntry // não mostra o texxto
+          placeholder="Senha"
+        />
+      </Senha>
+
+      <Entrar onPress={() => navigation.navigate('Inicial')} />
+      <BotaoTexto>Entrar</BotaoTexto>
+    </Background>
+  );
+}

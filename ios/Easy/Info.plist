@@ -38,7 +38,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -53,5 +53,37 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>ROBOTO-BLACK.TTF</string>
+		<string>ROBOTO-BLACKITALIC.TTF</string>
+		<string>ROBOTO-BOLD.TTF</string>
+		<string>ROBOTO-BOLDITALIC.TTF</string>
+		<string>ROBOTO-ITALIC.TTF</string>
+		<string>ROBOTO-LIGHT.TTF</string>
+		<string>ROBOTO-LIGHTITALIC.TTF</string>
+		<string>ROBOTO-MEDIUM.TTF</string>
+		<string>ROBOTO-MEDIUMITALIC.TTF</string>
+		<string>ROBOTO-REGULAR.TTF</string>
+		<string>ROBOTO-THIN.TTF</string>
+		<string>ROBOTO-THINITALIC.TTF</string>
+		<string>AntDesign.ttf</string>
+		<string>Entypo.ttf</string>
+		<string>EvilIcons.ttf</string>
+		<string>Feather.ttf</string>
+		<string>FontAwesome.ttf</string>
+		<string>FontAwesome5_Brands.ttf</string>
+		<string>FontAwesome5_Regular.ttf</string>
+		<string>FontAwesome5_Solid.ttf</string>
+		<string>Fontisto.ttf</string>
+		<string>Foundation.ttf</string>
+		<string>Ionicons.ttf</string>
+		<string>MaterialCommunityIcons.ttf</string>
+		<string>MaterialIcons.ttf</string>
+		<string>Octicons.ttf</string>
+		<string>SimpleLineIcons.ttf</string>
+		<string>Zocial.ttf</string>
+		<string>ROBOTO.TTF</string>
+	</array>
 </dict>
 </plist>

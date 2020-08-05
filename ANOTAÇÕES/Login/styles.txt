@@ -1,0 +1,92 @@
+import styled from 'styled-components/native';
+import { RectButton } from 'react-native-gesture-handler'; // RectButton é para botão retangular
+
+import Botao from '../../components/Botao';
+// import Input from '../../components/Input';
+
+export const Easy = styled.Text`
+  position: absolute;
+  width: 330px;
+  height: 66px;
+  left: 16px;
+  top: 80px;
+
+  font-family: Arial Bold;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 42px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 6px;
+  /* letter-spacing: 0.1em; */
+
+  color: #000000;
+`;
+
+export const Usuario = styled.View`
+  width: 330px;
+  height: 40px;
+  left: 16px;
+  top: 153px;
+  border-bottom-width: 1px;
+  border-color: #000000;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const UsuarioInput = styled.TextInput.attrs({
+  placeholderTextColor:
+    '#57545e' /* cor do que está escrito dentro da caixa, poderia estar no index.js */,
+})`
+  font-family: Arial Bold;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  padding: 0px 10px;
+  flex: 1;
+  letter-spacing: 1.6px;
+`;
+
+export const Senha = styled.View`
+  width: 330px;
+  height: 41px;
+  left: 16px;
+  top: 227px;
+  border-bottom-width: 1px;
+  border-color: #000000;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const SenhaInput = styled.TextInput.attrs({
+  placeholderTextColor:
+    '#57545e' /* cor do que está escrito dentro da caixa, poderia estar no index.js */,
+})`
+  font-family: Arial Bold;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  padding: 0px 10px;
+  flex: 1;
+  letter-spacing: 1.6px;
+`;
+
+export const Entrar = styled(Botao)`
+  width: 330px;
+  height: 41px;
+  left: 16px;
+  margin-top: 250px;
+  align-items: center;
+  justify-content: center;
+  background: #3b9eff;
+`;
+
+export const BotaoTexto = styled.Text``;
