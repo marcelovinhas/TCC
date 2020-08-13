@@ -11,6 +11,7 @@ import Adicionar from './pages/Adicionar';
 import Compras from './pages/Compras';
 import Despensa from './pages/Despensa';
 import Configuracao from './pages/Configuracao';
+import NovoItem from './pages/NovoItem';
 
 const Stack = createStackNavigator();
 
@@ -27,6 +28,7 @@ export default function Routes() {
       <Stack.Screen name="Compras" component={Compras} />
       <Stack.Screen name="Despensa" component={Despensa} />
       <Stack.Screen name="Configuracao" component={Configuracao} />
+      <Stack.Screen name="NovoItem" component={NovoItem} />
     </Stack.Navigator>
   );
 }

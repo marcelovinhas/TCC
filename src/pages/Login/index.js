@@ -25,7 +25,7 @@ export default function Login({ navigation }) {
 
   return (
     <Background>
-      <Easy>Easy</Easy>
+      <Easy>EASY</Easy>
       <Usuario>
         <UsuarioInput
           icon="mail-outline"
@@ -45,8 +45,8 @@ export default function Login({ navigation }) {
           icon="lock-outline"
           secureTextEntry // não mostra o texto
           placeholder="Senha"
-          ref={passwordRef}
           returnKeyType="send"
+          ref={passwordRef}
           value={password}
           onChangeText={setPassword}
         />
