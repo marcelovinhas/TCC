@@ -37,7 +37,7 @@ export default function Inicial({ navigation }) {
         <Text>Despensa</Text>
       </DespensaBotao>
 
-      <ConfiguracaoBotao onPress={() => navigation.navigate('NovoItem')}>
+      <ConfiguracaoBotao onPress={() => navigation.navigate('Configuracao')}>
         <Text>Configurações</Text>
       </ConfiguracaoBotao>
     </Background>

@@ -19,7 +19,7 @@ export const Easy = styled.Text`
   left: 20px;
   top: 90px;
 
-  font-family: 'Roboto-Light';
+  font-family: 'RobotoSlab-Regular';
   font-size: 50px;
   line-height: 50px;
   display: flex;
