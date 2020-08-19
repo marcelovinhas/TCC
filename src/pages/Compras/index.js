@@ -6,7 +6,7 @@ import { Background } from '../../components/Background';
 export default function Compras() {
   return (
     <Background>
-      <Text>TELA DE COMPRAS</Text>
+      <Text>TELA DE COMPRASSSSSSSSSSSSSSS</Text>
     </Background>
   );
 }
