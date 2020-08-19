@@ -6,7 +6,7 @@ import { Background } from '../../components/Background';
 export default function Adicionar() {
   return (
     <Background>
-      <Text>TELA DE ADICIONAR EVENTO</Text>
+      <Text>TELA DE ADICIONAR EVENTooooo</Text>
     </Background>
   );
 }
