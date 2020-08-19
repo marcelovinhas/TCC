@@ -135,7 +135,7 @@ export default function Configuracao({ navigation }) {
           placeholder="--"
           keyboardType="numeric"
         />
-        <Text style={styles.alarmTitle}>minutos antes</Text>
+        <Text style={styles.alarmTitle}>minutoss antes</Text>
       </View>
 
       <View style={styles.superiorHeader}>
