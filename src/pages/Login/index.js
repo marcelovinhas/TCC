@@ -15,6 +15,7 @@ import {
   ContaBotao,
   ContaTexto,
   CadastreTexto,
+  Container,
 } from './styles';
 
 export default function Login({ navigation }) {
@@ -53,7 +54,9 @@ export default function Login({ navigation }) {
       </Senha>
 
       <EntrarBotao onPress={() => navigation.navigate('Inicial')}>
-        <EntrarTexto>Entrar</EntrarTexto>
+        <Container>
+          <EntrarTexto>Entrar</EntrarTexto>
+        </Container>
       </EntrarBotao>
 
       <EsqueciBotao onPress={() => navigation.navigate('Esqueci')}>

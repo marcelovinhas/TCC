@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import LinearGradient from 'react-native-linear-gradient';
 
 // import Button from '../../components/Button';
 import Input from '../../components/Input';
@@ -61,6 +62,13 @@ export const SenhaInput = styled(Input)`
   flex: 1;
 `;
 
+export const Container = styled(LinearGradient).attrs({
+  colors: ['#5671cf', '#133DD0'],
+})`
+  justify-content: center;
+  flex: 1;
+`;
+
 export const EntrarBotao = styled.TouchableOpacity`
   width: 270px;
   height: 43px;
@@ -68,7 +76,7 @@ export const EntrarBotao = styled.TouchableOpacity`
   align-self: center; /* coloca no meio no sentido horizontal */
   justify-content: center;
 
-  background: #5671cf;
+  /* background: #5671cf; */
   border: 2px solid #333333;
 
   border-radius: 5px;
@@ -79,9 +87,9 @@ export const EntrarTexto = styled.Text`
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
-  line-height: 21px;
+  /* line-height: 35px; */
   display: flex;
-  align-items: center;
+  align-self: center;
   text-align: center;
   letter-spacing: 1.8px;
 
