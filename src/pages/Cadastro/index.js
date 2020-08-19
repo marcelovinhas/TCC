@@ -118,7 +118,7 @@ export default function Cadastro({ navigation }) {
       </CadastrarBotao>
 
       <CancelarBotao onPress={() => navigation.navigate('Login')}>
-        <CancelarTexto>Cancelar</CancelarTexto>
+        <CancelarTexto>Cancelarr</CancelarTexto>
       </CancelarBotao>
     </Background>
   );
