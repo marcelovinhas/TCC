@@ -1,7 +1,9 @@
 import React, { useRef, useState } from 'react';
 // import { Keyboard } from 'react-native';
-
+import { useDispatch, useSelector } from 'react-redux';
 import { Background } from '../../components/Background';
+import { signInRequest } from '../../store/modules/auth/actions';
+
 import {
   Easy,
   Usuario,
@@ -19,10 +21,17 @@ import {
 } from './styles';
 
 export default function Login({ navigation }) {
-  const passwordRef = useRef();
+  const dispatch = useDispatch();
+  const senhaRef = useRef();
 
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [senha, setSenha] = useState('');
+
+  const loading = useSelector((state) => state.auth.loading);
+
+  function handleSubmit() {
+    dispatch(signInRequest(email, senha));
+  }
 
   return (
     <Background>
@@ -35,7 +44,7 @@ export default function Login({ navigation }) {
           autoCapitalize="none" // não coloca letra maiúscula
           placeholder="Nome de usuário ou email"
           returnKeyType="next" // muda o botão de passar adiante do teclado
-          onSubmitEditing={() => passwordRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
+          onSubmitEditing={() => senhaRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
           value={email}
           onChangeText={setEmail}
         />
@@ -47,13 +56,14 @@ export default function Login({ navigation }) {
           secureTextEntry // não mostra o texto
           placeholder="Senha"
           returnKeyType="send"
-          ref={passwordRef}
-          value={password}
-          onChangeText={setPassword}
+          onSubmitEditing={handleSubmit}
+          ref={senhaRef}
+          value={senha}
+          onChangeText={setSenha}
         />
       </Senha>
 
-      <EntrarBotao onPress={() => navigation.navigate('Inicial')}>
+      <EntrarBotao loading={loading} onPress={handleSubmit}>
         <Container>
           <EntrarTexto>Entrar</EntrarTexto>
         </Container>

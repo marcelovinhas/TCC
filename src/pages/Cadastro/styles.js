@@ -65,7 +65,7 @@ export const Email = styled.View`
   width: 330px;
   height: 41px;
   left: 16px;
-  top: 220px;
+  top: 190px;
   border-bottom-width: 1px;
   border-color: #000000;
   flex-direction: row;
@@ -84,7 +84,7 @@ export const Senha = styled.View`
   width: 330px;
   height: 41px;
   left: 16px;
-  top: 250px;
+  top: 220px;
   border-bottom-width: 1px;
   border-color: #000000;
   flex-direction: row;
@@ -103,7 +103,7 @@ export const ConfirmarSenha = styled.View`
   width: 330px;
   height: 41px;
   left: 16px;
-  top: 280px;
+  top: 250px;
   border-bottom-width: 1px;
   border-color: #000000;
   flex-direction: row;
@@ -121,7 +121,7 @@ export const ConfirmarSenhaInput = styled(Input)`
 export const CadastrarBotao = styled.TouchableOpacity`
   width: 270px;
   height: 43px;
-  top: 320px;
+  top: 280px;
   align-self: center; /* coloca no meio no sentido horizontal */
   justify-content: center;
 
@@ -148,7 +148,7 @@ export const CadastrarTexto = styled.Text`
 export const CancelarBotao = styled.TouchableOpacity`
   width: 150px;
   height: 43px;
-  top: 435px;
+  top: 470px;
   margin-left: 10px;
   align-self: flex-start; /* coloca no meio no sentido horizontal */
   justify-content: center;

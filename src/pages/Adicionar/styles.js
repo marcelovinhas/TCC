@@ -1,120 +1,7 @@
 import styled from 'styled-components/native';
-
+import { StyleSheet } from 'react-native';
 // import Button from '../../components/Button';
 import Input from '../../components/Input';
-
-export const Titulo = styled.View`
-  width: 330px;
-  height: 40px;
-  left: 16px;
-  top: 100px;
-  border-bottom-width: 1px;
-  border-color: #000000;
-  flex-direction: row;
-  align-items: center;
-`;
-
-export const TituloInput = styled(Input)`
-  font-family: Arial Bold;
-  display: flex;
-  align-items: center;
-  padding: 0px 5px;
-  flex: 1;
-`;
-
-export const Local = styled.View`
-  width: 330px;
-  height: 40px;
-  left: 16px;
-  top: 125px;
-  border-bottom-width: 1px;
-  border-color: #000000;
-  flex-direction: row;
-  align-items: center;
-`;
-
-export const LocalInput = styled(Input)`
-  font-family: Arial Bold;
-  display: flex;
-  align-items: center;
-  padding: 0px 5px;
-  flex: 1;
-`;
-
-export const Descricao = styled.View`
-  width: 330px;
-  height: 40px;
-  left: 16px;
-  top: 150px;
-  border-bottom-width: 1px;
-  border-color: #000000;
-  flex-direction: row;
-  align-items: center;
-`;
-
-export const DescricaoInput = styled(Input)`
-  font-family: Arial Bold;
-  display: flex;
-  align-items: center;
-  padding: 0px 5px;
-  flex: 1;
-`;
-
-export const Data = styled.View`
-  width: 330px;
-  height: 41px;
-  left: 16px;
-  top: 175px;
-  border-bottom-width: 1px;
-  border-color: #000000;
-  flex-direction: row;
-  align-items: center;
-`;
-
-export const DataInput = styled(Input)`
-  font-family: Arial Bold;
-  display: flex;
-  align-items: center;
-  padding: 0px 5px;
-  flex: 1;
-`;
-
-export const Hora = styled.View`
-  width: 330px;
-  height: 41px;
-  left: 16px;
-  top: 200px;
-  border-bottom-width: 1px;
-  border-color: #000000;
-  flex-direction: row;
-  align-items: center;
-`;
-
-export const HoraInput = styled(Input)`
-  font-family: Arial Bold;
-  display: flex;
-  align-items: center;
-  padding: 0px 5px;
-  flex: 1;
-`;
-
-export const Lembrar = styled.Text`
-  margin-top: 250px;
-  align-self: stretch;
-  font-size: 21px;
-  font-weight: bold;
-  letter-spacing: 1.6px;
-  margin-left: 20px;
-`;
-
-export const Repetir = styled.Text`
-  margin-top: 80px;
-  align-self: stretch;
-  font-size: 21px;
-  font-weight: bold;
-  letter-spacing: 1.6px;
-  margin-left: 20px;
-`;
 
 export const SairBotao = styled.TouchableOpacity`
   width: 150px;
@@ -122,9 +9,7 @@ export const SairBotao = styled.TouchableOpacity`
   margin-left: 10px;
   align-self: flex-start; /* coloca no meio no sentido horizontal */
   justify-content: center;
-
   border: 2px solid #333333;
-
   border-radius: 15px;
 `;
 
@@ -137,7 +22,6 @@ export const SairTexto = styled.Text`
   align-items: center;
   text-align: center;
   letter-spacing: 1.8px;
-
   color: #333333;
 `;
 
@@ -147,9 +31,7 @@ export const SalvarBotao = styled.TouchableOpacity`
   margin-left: 70px;
   align-self: flex-start; /* coloca no meio no sentido horizontal */
   justify-content: center;
-
   border: 2px solid #333333;
-
   border-radius: 15px;
 `;
 
@@ -162,19 +44,88 @@ export const SalvarTexto = styled.Text`
   align-items: center;
   text-align: center;
   letter-spacing: 1.8px;
-
   color: #333333;
 `;
 
-export const Caixa = styled.View`
-  margin-top: 0px;
-  /*margin-bottom: 400px; */
-  position: absolute;
-  width: 400px;
-  height: 70px;
-  align-self: center;
-  /*margin: 80px 0px 400px;*/
-  flex: 1;
-  background: #000000;
-  border: 2px solid #000000;
-`;
+export const styles = StyleSheet.create({
+  superiorTitle: {
+    marginTop: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: 10,
+    marginRight: 10,
+    height: 40,
+    borderRadius: 5,
+    color: '#FFF',
+    fontSize: 25,
+  },
+  caixaBranca: {
+    marginTop: 5,
+    backgroundColor: '#FFF', // caixa de texto Quantidade
+    padding: 9,
+    height: 70,
+    textAlign: 'center',
+    color: '#000',
+    borderRadius: 5,
+    flexDirection: 'row',
+  },
+  titulo: {
+    fontSize: 25,
+    marginTop: 15,
+    backgroundColor: '#FFF', // caixa de texto Quantidade
+    padding: 9,
+    height: 70,
+    textAlign: 'center',
+    color: '#000',
+    borderRadius: 5,
+  },
+  lembrarTitle: {
+    // backgroundColor: '#dae2ed',
+    // marginTop: 250,
+    top: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: 10,
+    marginRight: 10,
+    height: 40,
+    borderRadius: 5,
+    color: '#000',
+    fontSize: 20,
+  },
+  repetirTitle: {
+    // backgroundColor: '#dae2ed',
+    // marginTop: 250,
+    top: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: 10,
+    marginRight: 10,
+    height: 40,
+    borderRadius: 5,
+    color: '#000',
+    fontSize: 20,
+  },
+  lembrarContainer: {
+    // paddingTop: 10,
+    alignItems: 'center',
+    backgroundColor: '#FFF',
+    flexDirection: 'row',
+    borderColor: '#dae2ed',
+    elevation: 2,
+    height: 40,
+    width: 62,
+    top: 10,
+  },
+  repetirContainer: {
+    // paddingTop: 10,
+    alignItems: 'center',
+    backgroundColor: '#FFF',
+    // top: 70,
+    marginLeft: 10,
+    elevation: 2,
+  },
+  botaoHeader: {
+    flexDirection: 'row',
+    top: 80,
+  },
+});

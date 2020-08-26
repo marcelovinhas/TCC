@@ -1,39 +1,70 @@
-import React, { useRef, useState } from 'react';
-import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import React, { useRef, useState, useEffect } from 'react';
+import { View, TouchableOpacity } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+import { CommonActions } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { Background } from '../../components/Background';
+
+import { signOut } from '../../store/modules/auth/actions';
+import { updateProfileRequest } from '../../store/modules/usuario/actions';
 
 import {
   Caixa,
   Text,
   Nome,
-  Sobrenome,
-  SobrenomeInput,
-  NomeInput,
-  Usuario,
-  UsuarioInput,
+  TextInput,
   Senha,
-  SenhaInput,
+  ConfirmarSenha,
   Email,
-  EmailInput,
   SairBotao,
   SairTexto,
   SalvarBotao,
   SalvarTexto,
+  styles,
+  SenhaAntiga,
 } from './styles';
 
 export default function Configuracao({ navigation }) {
-  const usuarioRef = useRef();
-  const sobrenomeRef = useRef();
-  const emailRef = useRef();
-  const senhaRef = useRef();
+  const dispatch = useDispatch();
+  const profile = useSelector((state) => state.usuario.profile);
 
-  const [nome, setNome] = useState('');
-  const [sobrenome, setSobrenome] = useState('');
-  const [usuario, setUsuario] = useState('');
-  const [email, setEmail] = useState('');
+  const emailRef = useRef();
+  const senhaAntigaRef = useRef();
+  const senhaRef = useRef();
+  const confirmarSenhaRef = useRef();
+
+  const [nome, setNome] = useState(profile.nome);
+  const [email, setEmail] = useState(profile.email);
+  const [senhaAntiga, setSenhaAntiga] = useState('');
   const [senha, setSenha] = useState('');
+  const [confirmarSenha, setConfirmarSenha] = useState('');
+
+  useEffect(() => {
+    setSenhaAntiga('');
+    setSenha('');
+    setConfirmarSenha('');
+  }, [profile]);
+
+  function handleSubmit() {
+    dispatch(
+      updateProfileRequest({
+        nome,
+        email,
+        senhaAntiga,
+        senha,
+        confirmarSenha,
+      })
+    );
+  }
+
+  function handleLogout() {
+    dispatch(signOut());
+    // CommonActions.reset({
+    //   name: 'login',
+    // });
+  }
+
   return (
     <Background>
       <Caixa>
@@ -51,101 +82,111 @@ export default function Configuracao({ navigation }) {
         </View>
       </Caixa>
 
-      <Text>Editar perfil</Text>
+      <View style={{ flexDirection: 'row' }}>
+        <Icon
+          style={{ marginLeft: 15, marginRight: 5, top: 118 }}
+          name="create"
+          color="#000"
+          size={30}
+        />
+        <Text>Editar perfil</Text>
+      </View>
+
       <Nome>
-        <NomeInput
+        <TextInput
           icon="sentiment-satisfied"
           autoCorrect={false} // não corrige o email automaticamente
           autoCapitalize="words"
-          placeholder="Nome"
+          placeholder="Nome Completo"
           returnKeyType="next" // muda o botão de passar adiante do teclado
-          onSubmitEditing={() => sobrenomeRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
+          onSubmitEditing={() => emailRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
           value={nome}
           onChangeText={setNome}
         />
       </Nome>
 
-      <Sobrenome>
-        <SobrenomeInput
-          icon="sentiment-satisfied"
-          autoCorrect={false} // não corrige o email automaticamente
-          autoCapitalize="words"
-          placeholder="Sobrenome"
-          returnKeyType="next" // muda o botão de passar adiante do teclado
-          onSubmitEditing={() => usuarioRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
-          ref={sobrenomeRef}
-          value={sobrenome}
-          onChangeText={setSobrenome}
-        />
-      </Sobrenome>
-
-      <Usuario>
-        <UsuarioInput
-          icon="person-outline"
-          autoCorrect={false} // não corrige o email automaticamente
-          autoCapitalize="none" // não coloca letra maiúscula
-          placeholder="Nome de usuário"
-          returnKeyType="next" // muda o botão de passar adiante do teclado
-          onSubmitEditing={() => emailRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
-          ref={usuarioRef}
-          value={usuario}
-          onChangeText={setUsuario}
-        />
-      </Usuario>
-
-      <Text>Configuracoes da conta</Text>
       <Email>
-        <EmailInput
+        <TextInput
           icon="mail-outline"
-          keyboardType="email-address" // adiciona @ e .com automaticamente
           autoCorrect={false} // não corrige o email automaticamente
           autoCapitalize="none" // não coloca letra maiúscula
           placeholder="Email"
           returnKeyType="next" // muda o botão de passar adiante do teclado
-          onSubmitEditing={() => senhaRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
+          onSubmitEditing={() => senhaAntigaRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
           ref={emailRef}
           value={email}
           onChangeText={setEmail}
         />
       </Email>
-      <Senha>
-        <SenhaInput
+
+      <View style={{ flexDirection: 'row' }}>
+        <Icon
+          style={{ marginLeft: 15, marginRight: 5, top: 114 }}
+          name="person"
+          color="#000"
+          size={35}
+        />
+        <Text>Configuracoes da conta</Text>
+      </View>
+
+      <SenhaAntiga>
+        <TextInput
           icon="lock-open"
           secureTextEntry // não mostra o texto
-          placeholder="Senha"
+          placeholder="Senha atual"
+          returnKeyType="next" // muda o botão de passar adiante do teclado
+          onSubmitEditing={() => senhaRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
+          ref={senhaAntigaRef}
+          value={senhaAntiga}
+          onChangeText={setSenhaAntiga}
+        />
+      </SenhaAntiga>
+
+      <Senha>
+        <TextInput
+          icon="lock-outline"
+          secureTextEntry // não mostra o texto
+          placeholder="Nova senha"
           returnKeyType="next"
-          // onSubmitEditing={() => confirmarSenhaRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
+          onSubmitEditing={() => confirmarSenhaRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
           ref={senhaRef}
           value={senha}
           onChangeText={setSenha}
         />
       </Senha>
 
-      <SairBotao onPress={() => navigation.navigate('Inicial')}>
+      <ConfirmarSenha>
+        <TextInput
+          icon="lock"
+          secureTextEntry // não mostra o texto
+          placeholder="Confirmar nova senha"
+          returnKeyType="send"
+          ref={confirmarSenhaRef}
+          value={confirmarSenha}
+          onChangeText={setConfirmarSenha}
+        />
+      </ConfirmarSenha>
+
+      <SairBotao onPress={handleLogout}>
         <SairTexto>Sair</SairTexto>
       </SairBotao>
 
-      <SalvarBotao onPress={() => navigation.navigate('Inicial')}>
+      <SalvarBotao onPress={handleSubmit}>
         <SalvarTexto>Salvar</SalvarTexto>
       </SalvarBotao>
+
+      {/* <SalvarBotao
+        onPress={() =>
+          Alert.alert('Alteracoes salvas!', '', [
+            {
+              text: 'Voltar para tela inicial',
+              onPress: () => navigation.navigate('Inicial'),
+            },
+          ])
+        }
+      >
+        <SalvarTexto>Salvar</SalvarTexto>
+      </SalvarBotao> */}
     </Background>
   );
 }
-
-const styles = StyleSheet.create({
-  superiorTitle: {
-    // backgroundColor: '#dae2ed',
-    marginTop: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: 10,
-    marginRight: 10,
-    height: 40,
-    borderRadius: 5,
-    color: '#FFF',
-    fontSize: 25,
-  },
-  superiorHeader: {
-    flexDirection: 'row',
-  },
-});
