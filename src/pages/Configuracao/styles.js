@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-
+import { StyleSheet } from 'react-native';
 // import Button from '../../components/Button';
 import Input from '../../components/Input';
 
@@ -11,7 +11,6 @@ export const Text = styled.Text`
   font-weight: bold;
   text-align: left;
   letter-spacing: 1.6px;
-
   color: #000000;
 `;
 
@@ -26,7 +25,7 @@ export const Nome = styled.View`
   align-items: center;
 `;
 
-export const NomeInput = styled(Input)`
+export const TextInput = styled(Input)`
   font-family: Arial Bold;
   display: flex;
   align-items: center;
@@ -34,7 +33,7 @@ export const NomeInput = styled(Input)`
   flex: 1;
 `;
 
-export const Sobrenome = styled.View`
+export const Email = styled.View`
   width: 330px;
   height: 40px;
   left: 16px;
@@ -45,34 +44,7 @@ export const Sobrenome = styled.View`
   align-items: center;
 `;
 
-export const SobrenomeInput = styled(Input)`
-  font-family: Arial Bold;
-  display: flex;
-  align-items: center;
-  padding: 0px 5px;
-  flex: 1;
-`;
-
-export const Usuario = styled.View`
-  width: 330px;
-  height: 40px;
-  left: 16px;
-  top: 75px;
-  border-bottom-width: 1px;
-  border-color: #000000;
-  flex-direction: row;
-  align-items: center;
-`;
-
-export const UsuarioInput = styled(Input)`
-  font-family: Arial Bold;
-  display: flex;
-  align-items: center;
-  padding: 0px 5px;
-  flex: 1;
-`;
-
-export const Email = styled.View`
+export const SenhaAntiga = styled.View`
   width: 330px;
   height: 41px;
   left: 16px;
@@ -81,14 +53,6 @@ export const Email = styled.View`
   border-color: #000000;
   flex-direction: row;
   align-items: center;
-`;
-
-export const EmailInput = styled(Input)`
-  font-family: Arial Bold;
-  display: flex;
-  align-items: center;
-  padding: 0px 5px;
-  flex: 1;
 `;
 
 export const Senha = styled.View`
@@ -102,12 +66,15 @@ export const Senha = styled.View`
   align-items: center;
 `;
 
-export const SenhaInput = styled(Input)`
-  font-family: Arial Bold;
-  display: flex;
+export const ConfirmarSenha = styled.View`
+  width: 330px;
+  height: 41px;
+  left: 16px;
+  top: 75px;
+  border-bottom-width: 1px;
+  border-color: #000000;
+  flex-direction: row;
   align-items: center;
-  padding: 0px 5px;
-  flex: 1;
 `;
 
 export const SairBotao = styled.TouchableOpacity`
@@ -117,9 +84,7 @@ export const SairBotao = styled.TouchableOpacity`
   margin-left: 10px;
   align-self: flex-start; /* coloca no meio no sentido horizontal */
   justify-content: center;
-
   border: 2px solid #333333;
-
   border-radius: 15px;
 `;
 
@@ -132,7 +97,6 @@ export const SairTexto = styled.Text`
   align-items: center;
   text-align: center;
   letter-spacing: 1.8px;
-
   color: #333333;
 `;
 
@@ -143,9 +107,7 @@ export const SalvarBotao = styled.TouchableOpacity`
   margin-left: 230px;
   align-self: flex-start; /* coloca no meio no sentido horizontal */
   justify-content: center;
-
   border: 2px solid #333333;
-
   border-radius: 15px;
 `;
 
@@ -158,7 +120,6 @@ export const SalvarTexto = styled.Text`
   align-items: center;
   text-align: center;
   letter-spacing: 1.8px;
-
   color: #333333;
 `;
 
@@ -174,3 +135,21 @@ export const Caixa = styled.View`
   background: #000000;
   border: 2px solid #000000;
 `;
+
+export const styles = StyleSheet.create({
+  superiorTitle: {
+    // backgroundColor: '#dae2ed',
+    marginTop: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: 10,
+    marginRight: 10,
+    height: 40,
+    borderRadius: 5,
+    color: '#FFF',
+    fontSize: 25,
+  },
+  superiorHeader: {
+    flexDirection: 'row',
+  },
+});

@@ -1,14 +1,17 @@
 import React, { useRef, useState } from 'react';
-import { Alert } from 'react-native';
+// import { Alert } from 'react-native';e
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Background } from '../../components/Background';
+
+import { signUpRequest } from '../../store/modules/auth/actions';
 
 import {
   Easy,
   Nome,
   NomeInput,
-  Usuario,
-  UsuarioInput,
+  // Usuario,
+  // UsuarioInput,
   Senha,
   SenhaInput,
   Email,
@@ -22,16 +25,24 @@ import {
 } from './styles';
 
 export default function Cadastro({ navigation }) {
-  const usuarioRef = useRef();
+  const dispatch = useDispatch();
+
+  // const usuarioRef = useRef();
   const emailRef = useRef();
   const senhaRef = useRef();
   const confirmarSenhaRef = useRef();
 
   const [nome, setNome] = useState('');
-  const [usuario, setUsuario] = useState('');
+  // const [usuario, setUsuario] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [confirmarSenha, setConfirmarSenha] = useState('');
+
+  const loading = useSelector((state) => state.auth.loading);
+
+  function handleSubmit() {
+    dispatch(signUpRequest(nome, email, senha, confirmarSenha));
+  }
 
   return (
     <Background>
@@ -44,13 +55,13 @@ export default function Cadastro({ navigation }) {
           autoCapitalize="words"
           placeholder="Nome completo"
           returnKeyType="next" // muda o botão de passar adiante do teclado
-          onSubmitEditing={() => usuarioRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
+          onSubmitEditing={() => emailRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
           value={nome}
           onChangeText={setNome}
         />
       </Nome>
 
-      <Usuario>
+      {/* <Usuario>
         <UsuarioInput
           icon="person-outline"
           autoCorrect={false} // não corrige o email automaticamente
@@ -62,7 +73,7 @@ export default function Cadastro({ navigation }) {
           value={usuario}
           onChangeText={setUsuario}
         />
-      </Usuario>
+      </Usuario> */}
 
       <Email>
         <EmailInput
@@ -98,13 +109,14 @@ export default function Cadastro({ navigation }) {
           secureTextEntry // não mostra o texto
           placeholder="Repetir senha"
           returnKeyType="send"
+          onSubmitEditing={handleSubmit}
           ref={confirmarSenhaRef}
           value={confirmarSenha}
           onChangeText={setConfirmarSenha}
         />
       </ConfirmarSenha>
 
-      <CadastrarBotao
+      {/* <CadastrarBotao
         onPress={() =>
           Alert.alert('Cadastro realizado.', 'Bem vindo!', [
             {
@@ -115,10 +127,14 @@ export default function Cadastro({ navigation }) {
         }
       >
         <CadastrarTexto>Cadastrar</CadastrarTexto>
+      </CadastrarBotao> */}
+
+      <CadastrarBotao loading={loading} onPress={handleSubmit}>
+        <CadastrarTexto>Cadastrar</CadastrarTexto>
       </CadastrarBotao>
 
       <CancelarBotao onPress={() => navigation.navigate('Login')}>
-        <CancelarTexto>Cancelarr</CancelarTexto>
+        <CancelarTexto>Voltar</CancelarTexto>
       </CancelarBotao>
     </Background>
   );

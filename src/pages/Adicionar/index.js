@@ -1,259 +1,253 @@
 import React, { useRef, useState } from 'react';
 import {
-  StyleSheet,
   View,
   TouchableOpacity,
   Text,
   TextInput,
+  Picker,
+  Alert,
+  KeyboardAvoidingView,
 } from 'react-native';
+
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
-import { Background } from '../../components/Background';
-
 import {
-  Caixa,
-  Titulo,
-  TituloInput,
-  Local,
-  LocalInput,
-  Descricao,
-  DescricaoInput,
-  Data,
-  DataInput,
-  Hora,
-  HoraInput,
   SairBotao,
   SairTexto,
   SalvarBotao,
   SalvarTexto,
+  styles,
 } from './styles';
 
-export default function Configuracao({ navigation }) {
+import { Background } from '../../components/Background';
+
+export default function Adicionar({ navigation }) {
   const localRef = useRef();
   const descricaoRef = useRef();
   const dataRef = useRef();
   const horaRef = useRef();
+  const lembrarhoraRef = useRef();
+  const lembrarminRef = useRef();
 
   const [titulo, setTitulo] = useState('');
   const [local, setLocal] = useState('');
   const [descricao, setDescricao] = useState('');
   const [data, setData] = useState('');
   const [hora, setHora] = useState('');
-  const [min, setMin] = useState('');
+
+  const [selectedValue, setSelectedValue] = useState('');
+  const [lembrarhora, setLembrarhora] = useState('');
+  const [lembrarmin, setlembrarmin] = useState('');
+
   return (
     <Background>
-      <Caixa>
-        <View style={styles.superiorHeader}>
-          <Text style={styles.superiorTitle}>Adicionar evento</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Inicial')}>
-            <Icon
-              style={{ marginLeft: 130, marginRight: 5, marginTop: 20 }}
-              name="home"
-              color="#FFF"
-              size={40}
-              // style={{height:60,width:60}}
-            />
-          </TouchableOpacity>
-        </View>
-      </Caixa>
+      <View style={{ flexDirection: 'row', backgroundColor: '#000' }}>
+        <Text style={styles.superiorTitle}>Adicionar evento</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Inicial')}>
+          <Icon
+            style={{ marginLeft: 130, marginRight: 5, marginTop: 20 }}
+            name="home"
+            color="#FFF"
+            size={40}
+            // style={{height:60,width:60}}
+          />
+        </TouchableOpacity>
+      </View>
 
-      <Titulo>
-        <TituloInput
-          // icon="sentiment-satisfied"
+      <KeyboardAvoidingView
+        behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+        // style={{flex: 1}}
+      >
+        <TextInput
           autoCorrect={false} // não corrige o email automaticamente
           autoCapitalize="words"
-          placeholder="Título"
+          placeholder="Adicionar título"
           returnKeyType="next" // muda o botão de passar adiante do teclado
           onSubmitEditing={() => localRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
           value={titulo}
           onChangeText={setTitulo}
+          // multiline // faz quebra de linha no texto
+          placeholderTextColor="#747474"
+          style={styles.titulo}
         />
-      </Titulo>
 
-      <Local>
-        <LocalInput
-          icon="location-on"
-          autoCorrect={false} // não corrige o email automaticamente
-          autoCapitalize="words"
-          placeholder="Local"
-          returnKeyType="next" // muda o botão de passar adiante do teclado
-          onSubmitEditing={() => descricaoRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
-          ref={localRef}
-          value={local}
-          onChangeText={setLocal}
-        />
-      </Local>
+        <View style={styles.caixaBranca}>
+          <Icon
+            style={{ marginLeft: 5, marginRight: 5, marginTop: 10 }}
+            name="location-on"
+            color="#000"
+            size={30}
+          />
+          <TextInput
+            style={{ fontSize: 18 }}
+            autoCorrect={false} // não corrige o email automaticamente
+            autoCapitalize="words"
+            placeholder="Local"
+            returnKeyType="next" // muda o botão de passar adiante do teclado
+            onSubmitEditing={() => descricaoRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
+            ref={localRef}
+            value={local}
+            onChangeText={setLocal}
+            // multiline // faz quebra de linha no texto
+            placeholderTextColor="#747474"
+          />
+        </View>
 
-      <Descricao>
-        <DescricaoInput
-          icon="short-text"
-          autoCorrect={false} // não corrige o email automaticamente
-          autoCapitalize="words"
-          placeholder="Descrição"
-          returnKeyType="next" // muda o botão de passar adiante do teclado
-          onSubmitEditing={() => dataRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
-          ref={descricaoRef}
-          value={descricao}
-          onChangeText={setDescricao}
-        />
-      </Descricao>
+        <View style={styles.caixaBranca}>
+          <Icon
+            style={{ marginLeft: 5, marginRight: 5, marginTop: 10 }}
+            name="short-text"
+            color="#000"
+            size={30}
+          />
+          <TextInput
+            style={{ fontSize: 18 }}
+            autoCorrect={false} // não corrige o email automaticamente
+            autoCapitalize="words"
+            placeholder="Descricao"
+            returnKeyType="next" // muda o botão de passar adiante do teclado
+            onSubmitEditing={() => dataRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
+            ref={descricaoRef}
+            value={descricao}
+            onChangeText={setDescricao}
+            // multiline // faz quebra de linha no texto
+            placeholderTextColor="#747474"
+          />
+        </View>
 
-      <Data>
-        <DataInput
-          icon="event-available"
-          autoCorrect={false} // não corrige o email automaticamente
-          autoCapitalize="words"
-          placeholder="Data"
-          returnKeyType="next" // muda o botão de passar adiante do teclado
-          onSubmitEditing={() => horaRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
-          ref={dataRef}
-          value={data}
-          onChangeText={setData}
-        />
-      </Data>
+        <View style={styles.caixaBranca}>
+          <Icon
+            style={{ marginLeft: 5, marginRight: 5, marginTop: 10 }}
+            name="event-available"
+            color="#000"
+            size={30}
+          />
+          <TextInput
+            style={{ fontSize: 18 }}
+            keyboardType="numeric"
+            autoCorrect={false} // não corrige o email automaticamente
+            autoCapitalize="words"
+            placeholder="Data"
+            returnKeyType="next" // muda o botão de passar adiante do teclado
+            onSubmitEditing={() => horaRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
+            ref={dataRef}
+            value={data}
+            onChangeText={setData}
+            // multiline // faz quebra de linha no texto
+            placeholderTextColor="#747474"
+          />
+        </View>
 
-      <Hora>
-        <HoraInput
-          icon="access-alarm"
-          autoCorrect={false} // não corrige o email automaticamente
-          autoCapitalize="words"
-          placeholder="Hora"
-          returnKeyType="next" // muda o botão de passar adiante do teclado
-          // onSubmitEditing={() => usuarioRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
-          ref={horaRef}
-          value={hora}
-          onChangeText={setHora}
-        />
-      </Hora>
+        <View style={styles.caixaBranca}>
+          <Icon
+            style={{ marginLeft: 5, marginRight: 5, marginTop: 10 }}
+            name="access-alarm"
+            color="#000"
+            size={30}
+          />
+          <TextInput
+            style={{ fontSize: 18 }}
+            keyboardType="numeric"
+            autoCorrect={false} // não corrige o email automaticamente
+            autoCapitalize="words"
+            placeholder="Hora"
+            returnKeyType="next" // muda o botão de passar adiante do teclado
+            onSubmitEditing={() => lembrarhoraRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
+            ref={horaRef}
+            value={hora}
+            onChangeText={setHora}
+            // multiline // faz quebra de linha no texto
+            placeholderTextColor="#747474"
+          />
+        </View>
 
-      <View style={styles.superiorHeader}>
-        <Text style={styles.alarmTitle}>Lembrar:</Text>
-        <TextInput
-          style={styles.input}
-          value={min}
-          onChangeText={(min) => setMin(min)}
-          placeholder="--"
-          keyboardType="numeric"
-        />
-        <Text style={styles.alarmTitle}>minutoss antes</Text>
-      </View>
+        <View style={styles.caixaBranca}>
+          <View style={{ flexDirection: 'row' }}>
+            <Icon
+              style={{ marginLeft: 5, marginRight: 5, marginTop: 10 }}
+              name="notifications"
+              color="#000"
+              size={30}
+            />
+            <Text style={styles.lembrarTitle}>Lembrar:</Text>
+            <View style={styles.lembrarContainer}>
+              <TextInput
+                keyboardType="numeric"
+                placeholderTextColor="#747474"
+                autoCorrect={false}
+                placeholder="00"
+                color="#000"
+                returnKeyType="next" // muda o botão de passar adiante do teclado
+                onSubmitEditing={() => lembrarminRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
+                ref={lembrarhoraRef}
+                value={lembrarhora}
+                onChangeText={(texto) => setLembrarhora(texto)}
+              />
+              <Text style={{ color: '#000', fontSize: 15, marginRight: 5 }}>
+                :
+              </Text>
+              <TextInput
+                keyboardType="numeric"
+                placeholderTextColor="#747474"
+                autoCorrect={false}
+                placeholder="00"
+                color="#000"
+                returnKeyType="next" // muda o botão de passar adiante do teclado
+                onSubmitEditing={() => lembrarminRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
+                ref={lembrarminRef}
+                value={lembrarmin}
+                onChangeText={(texto) => setlembrarmin(texto)}
+              />
+            </View>
+            <Text style={styles.lembrarTitle}>antes</Text>
+          </View>
+        </View>
 
-      <View style={styles.superiorHeader}>
-        <Text style={styles.repetirTitle}>Repetir:</Text>
-        <Icon
-          style={{ marginLeft: 22, marginRight: 5 }}
-          name="home"
-          color="#000"
-          size={28}
-        />
-        <Text style={styles.repetir2Title}>Todo dia</Text>
-      </View>
-      <View style={styles.superiorHeader}>
-        <Icon
-          style={{ marginLeft: 110, marginRight: 5 }}
-          name="home"
-          color="#000"
-          size={28}
-        />
-        <Text style={styles.repetir2Title}>Toda hora</Text>
-      </View>
-      <View style={styles.superiorHeader}>
-        <Icon
-          style={{ marginLeft: 110, marginRight: 5 }}
-          name="home"
-          color="#000"
-          size={28}
-        />
-        <Text style={styles.repetir2Title}>Toda mês</Text>
-      </View>
-      <View style={styles.superiorHeader}>
-        <Icon
-          style={{ marginLeft: 110, marginRight: 5 }}
-          name="home"
-          color="#000"
-          size={28}
-        />
-        <Text style={styles.repetir2Title}>Toda ano</Text>
-      </View>
+        <View style={styles.caixaBranca}>
+          <View style={{ flexDirection: 'row' }}>
+            <Icon
+              style={{ marginLeft: 5, marginRight: 5, marginTop: 10 }}
+              name="refresh"
+              color="#000"
+              size={30}
+            />
+            <Text style={styles.repetirTitle}>Repetir:</Text>
+            <View style={styles.repetirContainer}>
+              <Picker
+                selectedValue={selectedValue}
+                style={{ height: 50, width: 200 }}
+                onValueChange={(itemValue, itemIndex) =>
+                  setSelectedValue(itemValue)
+                }
+              >
+                <Picker.Item2 label="Nao repetir" value="nr" />
+                <Picker.Item2 label="Todo dia" value="td" />
+                <Picker.Item2 label="Toda semana" value="ts" />
+                <Picker.Item2 label="Todo mes" value="tm" />
+                <Picker.Item2 label="Todo ano" value="ta" />
+              </Picker>
+            </View>
+          </View>
+        </View>
+      </KeyboardAvoidingView>
+
       <View style={styles.botaoHeader}>
         <SairBotao onPress={() => navigation.navigate('Inicial')}>
           <SairTexto>Sair</SairTexto>
         </SairBotao>
 
-        <SalvarBotao onPress={() => navigation.navigate('Inicial')}>
+        <SalvarBotao
+          onPress={() =>
+            Alert.alert('Evento adicionado!', '', [
+              {
+                text: 'Voltar para tela inicial',
+                onPress: () => navigation.navigate('Inicial'),
+              },
+            ])
+          }
+        >
           <SalvarTexto>Salvar</SalvarTexto>
         </SalvarBotao>
       </View>
     </Background>
   );
 }
-
-const styles = StyleSheet.create({
-  superiorTitle: {
-    // backgroundColor: '#dae2ed',
-    marginTop: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: 10,
-    marginRight: 10,
-    height: 40,
-    borderRadius: 5,
-    color: '#FFF',
-    fontSize: 25,
-  },
-  superiorHeader: {
-    flexDirection: 'row',
-  },
-  botaoHeader: {
-    flexDirection: 'row',
-    marginTop: 30,
-  },
-  alarmTitle: {
-    // backgroundColor: '#dae2ed',
-    marginTop: 250,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: 10,
-    marginRight: 10,
-    height: 40,
-    borderRadius: 5,
-    color: '#000',
-    fontSize: 20,
-  },
-  input: {
-    backgroundColor: '#000000',
-    borderRadius: 0,
-    margin: 15,
-    padding: 0,
-    color: '#FFF',
-    fontSize: 20,
-    width: 25,
-    height: 25,
-    marginTop: 250,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  repetirTitle: {
-    // backgroundColor: '#dae2ed',
-    marginTop: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: 10,
-    marginRight: 10,
-    height: 40,
-    borderRadius: 5,
-    color: '#000',
-    fontSize: 20,
-  },
-  repetir2Title: {
-    // backgroundColor: '#dae2ed',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: 0,
-    marginRight: 10,
-    height: 40,
-    borderRadius: 5,
-    color: '#000',
-    fontSize: 20,
-  },
-});

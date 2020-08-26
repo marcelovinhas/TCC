@@ -10,31 +10,35 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import TaskList from '../../components/TaskList';
-
 import { Background } from '../../components/Background';
-
-import { Caixa } from './styles';
+import { Caixa, styles } from './styles';
 
 export default function Compras({ navigation }) {
   const [task, setTask] = useState([
-    { key: 1, task: 'arroz' },
-    { key: 2, task: 'macarrao' },
-    { key: 3, task: 'farinha' },
+    { key: 1, task: 'Arroz', contador: '1', preco: '' },
+    { key: 2, task: 'Macarrao', contador: '2', preco: '' },
+    { key: 3, task: 'Farinha', contador: '3', preco: '' },
   ]);
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState('');
+  const [input2, setInput2] = useState('');
+  // const [total, setTotal] = useState(0);
 
   function handleAdd() {
     if (input === '') return;
+    if (input2 === '') return;
 
     const data = {
       key: input,
       task: input,
+      contador: input2,
+      preco,
     };
 
     setTask([...task, data]);
     setOpen(false);
     setInput('');
+    setInput2('');
   }
 
   const handleDelete = useCallback((data) => {
@@ -64,6 +68,7 @@ export default function Compras({ navigation }) {
       </View>
 
       <FlatList
+        // numColumns={2}
         marginHorizontal={10}
         showsHorizontalScrollIndicator={false} // desabilita a barrinha de rolagem do lado
         data={task} // vao todos os dados da lista
@@ -97,12 +102,36 @@ export default function Compras({ navigation }) {
             value={input}
             onChangeText={(texto) => setInput(texto)}
           />
+          <TextInput
+            multiline // faz quebra de linha no texto
+            placeholderTextColor="#747474"
+            autoCorrect={false}
+            placeholder="Quantidade"
+            keyboardType="numeric"
+            style={styles.input2}
+            value={input2}
+            onChangeText={(texto2) => setInput2(texto2)}
+          />
 
           <TouchableOpacity style={styles.handleAdd} onPress={handleAdd}>
             <Text style={styles.handleAddText}>Adicionar</Text>
           </TouchableOpacity>
         </View>
       </Modal>
+
+      <View style={styles.fixos}>
+        <Text style={{ color: '#000', fontSize: 20, paddingLeft: 8 }}>R$</Text>
+        <Text
+          style={{
+            color: '#000',
+            fontSize: 20,
+            paddingLeft: 8,
+            paddingRight: 8,
+          }}
+        >
+          Total
+        </Text>
+      </View>
 
       <TouchableOpacity style={styles.fab}>
         <Icon
@@ -116,94 +145,3 @@ export default function Compras({ navigation }) {
     </Background>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#171d31',
-  },
-  title: {
-    marginTop: 100,
-    paddingBottom: 10,
-    fontSize: 25,
-    textAlign: 'center',
-    color: '#000',
-  },
-  fab: {
-    position: 'absolute',
-    width: 60,
-    height: 60,
-    backgroundColor: '#dae2ed',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 30,
-    right: 25,
-    bottom: 25,
-    elevation: 2,
-    zIndex: 9,
-    shadowColor: '#000',
-    shadowOpacity: 0.2,
-    shadowOffset: {
-      width: 1,
-      height: 3,
-    },
-  },
-  modal: {
-    flex: 1,
-    backgroundColor: '#dae2ed',
-  },
-  modalHeader: {
-    marginLeft: 10,
-    marginTop: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  modalTitle: {
-    marginLeft: 15,
-    fontSize: 23,
-    color: '#000',
-  },
-  modalBody: {
-    marginTop: 15,
-  },
-  input: {
-    fontSize: 15,
-    marginLeft: 10,
-    marginRight: 10,
-    marginTop: 30,
-    backgroundColor: '#dae2ed', // caixa de texto Add Item
-    padding: 9,
-    height: 85,
-    textAlignVertical: 'top',
-    color: '#000',
-    borderRadius: 5,
-  },
-  handleAdd: {
-    backgroundColor: '#dae2ed',
-    marginTop: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: 10,
-    marginRight: 10,
-    height: 40,
-    borderRadius: 5,
-  },
-  handleAddText: {
-    fontSize: 20,
-  },
-  superiorTitle: {
-    // backgroundColor: '#dae2ed',
-    marginTop: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: 10,
-    marginRight: 10,
-    height: 40,
-    borderRadius: 5,
-    color: '#FFF',
-    fontSize: 25,
-  },
-  superiorHeader: {
-    flexDirection: 'row',
-  },
-});
