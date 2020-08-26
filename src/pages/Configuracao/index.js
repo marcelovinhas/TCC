@@ -172,7 +172,7 @@ export default function Configuracao({ navigation }) {
       </SairBotao>
 
       <SalvarBotao onPress={handleSubmit}>
-        <SalvarTexto>Salvar</SalvarTexto>
+        <SalvarTexto>Atualizar</SalvarTexto>
       </SalvarBotao>
 
       {/* <SalvarBotao
