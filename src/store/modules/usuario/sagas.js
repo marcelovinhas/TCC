@@ -17,13 +17,13 @@ export function* updateProfile({ payload }) {
 
     const response = yield call(api.put, 'usuarios', profile);
 
-    Alert.alert('Sucesso!', 'Perfil atualizado com sucesso');
+    Alert.alert('Sucesso!', 'Perfil atualizado com sucesso.');
 
     yield put(updateProfileSuccess(response.data));
   } catch (err) {
     Alert.alert(
-      'Falha na atualização',
-      'Houve um erro na atualização do perfil, verifique seus dados'
+      'Erro ao atualizar seus dados!',
+      'Verifique se as senhas conferem.'
     );
     yield put(updateProfileFailure());
   }

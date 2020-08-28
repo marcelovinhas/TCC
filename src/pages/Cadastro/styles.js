@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import LinearGradient from 'react-native-linear-gradient';
 
 // import Button from '../../components/Button';
 import Input from '../../components/Input';
@@ -19,7 +20,6 @@ export const Easy = styled.Text`
   text-align: center;
   letter-spacing: 6px;
   /* letter-spacing: 0.1em; */
-
   color: #000000;
 `;
 
@@ -115,6 +115,13 @@ export const ConfirmarSenhaInput = styled(Input)`
   display: flex;
   align-items: center;
   padding: 0px 5px;
+  flex: 1;
+`;
+
+export const CorBotao = styled(LinearGradient).attrs({
+  colors: ['#5671cf', '#133DD0'],
+})`
+  justify-content: center;
   flex: 1;
 `;
 

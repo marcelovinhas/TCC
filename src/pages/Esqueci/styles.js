@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import LinearGradient from 'react-native-linear-gradient';
 
 import Input from '../../components/Input';
 
@@ -28,6 +29,13 @@ export const UsuarioInput = styled(Input)`
   display: flex;
   align-items: center;
   padding: 0px 5px;
+  flex: 1;
+`;
+
+export const CorBotao = styled(LinearGradient).attrs({
+  colors: ['#5671cf', '#133DD0'],
+})`
+  justify-content: center;
   flex: 1;
 `;
 

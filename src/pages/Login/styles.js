@@ -62,7 +62,7 @@ export const SenhaInput = styled(Input)`
   flex: 1;
 `;
 
-export const Container = styled(LinearGradient).attrs({
+export const CorBotao = styled(LinearGradient).attrs({
   colors: ['#5671cf', '#133DD0'],
 })`
   justify-content: center;

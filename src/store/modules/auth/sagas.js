@@ -46,17 +46,15 @@ export function* signUp({ payload }) {
 
     Alert.alert(
       'Cadastro realizado.',
-      'Volte a tela anterior e acesse sua conta',
-      [
-        {
-          text: 'login',
-        },
-      ]
+      'Clique no botão Voltar para retornar e acessar sua conta.'
     );
 
     // history.push('/');
   } catch (err) {
-    Alert.alert('Falha no registro', 'Por favor confira seus dados!');
+    Alert.alert(
+      'Falha no cadastro',
+      'Confira seus dados.                                     A senha deve ter pelo menos 6 dígitos.'
+    );
 
     yield put(signFailure());
   }

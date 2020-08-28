@@ -1,7 +1,12 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  Keyboard,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { CommonActions } from '@react-navigation/native';
+// import { CommonActions } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { Background } from '../../components/Background';
@@ -66,116 +71,118 @@ export default function Configuracao({ navigation }) {
   }
 
   return (
-    <Background>
-      <Caixa>
-        <View style={styles.superiorHeader}>
-          <Text style={styles.superiorTitle}>Configuracoes</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Inicial')}>
-            <Icon
-              style={{ marginLeft: 150, marginRight: 5, marginTop: 20 }}
-              name="home"
-              color="#FFF"
-              size={40}
-              // style={{height:60,width:60}}
-            />
-          </TouchableOpacity>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <Background>
+        <Caixa>
+          <View style={styles.superiorHeader}>
+            <Text style={styles.superiorTitle}>Configuracoes</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Inicial')}>
+              <Icon
+                style={{ marginLeft: 150, marginRight: 5, marginTop: 20 }}
+                name="home"
+                color="#FFF"
+                size={40}
+                // style={{height:60,width:60}}
+              />
+            </TouchableOpacity>
+          </View>
+        </Caixa>
+
+        <View style={{ flexDirection: 'row' }}>
+          <Icon
+            style={{ marginLeft: 15, marginRight: 5, top: 80 }}
+            name="create"
+            color="#000"
+            size={30}
+          />
+          <Text>Editar perfil</Text>
         </View>
-      </Caixa>
 
-      <View style={{ flexDirection: 'row' }}>
-        <Icon
-          style={{ marginLeft: 15, marginRight: 5, top: 118 }}
-          name="create"
-          color="#000"
-          size={30}
-        />
-        <Text>Editar perfil</Text>
-      </View>
+        <Nome>
+          <TextInput
+            icon="sentiment-satisfied"
+            autoCorrect={false} // não corrige o email automaticamente
+            autoCapitalize="words"
+            placeholder="Nome Completo"
+            returnKeyType="next" // muda o botão de passar adiante do teclado
+            onSubmitEditing={() => emailRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
+            value={nome}
+            onChangeText={setNome}
+          />
+        </Nome>
 
-      <Nome>
-        <TextInput
-          icon="sentiment-satisfied"
-          autoCorrect={false} // não corrige o email automaticamente
-          autoCapitalize="words"
-          placeholder="Nome Completo"
-          returnKeyType="next" // muda o botão de passar adiante do teclado
-          onSubmitEditing={() => emailRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
-          value={nome}
-          onChangeText={setNome}
-        />
-      </Nome>
+        <Email>
+          <TextInput
+            icon="mail-outline"
+            autoCorrect={false} // não corrige o email automaticamente
+            autoCapitalize="none" // não coloca letra maiúscula
+            placeholder="Email"
+            returnKeyType="next" // muda o botão de passar adiante do teclado
+            onSubmitEditing={() => senhaAntigaRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
+            ref={emailRef}
+            value={email}
+            onChangeText={setEmail}
+          />
+        </Email>
 
-      <Email>
-        <TextInput
-          icon="mail-outline"
-          autoCorrect={false} // não corrige o email automaticamente
-          autoCapitalize="none" // não coloca letra maiúscula
-          placeholder="Email"
-          returnKeyType="next" // muda o botão de passar adiante do teclado
-          onSubmitEditing={() => senhaAntigaRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
-          ref={emailRef}
-          value={email}
-          onChangeText={setEmail}
-        />
-      </Email>
+        <View style={{ flexDirection: 'row' }}>
+          <Icon
+            style={{ marginLeft: 15, marginRight: 5, top: 75 }}
+            name="person"
+            color="#000"
+            size={35}
+          />
+          <Text>Configuracoes da conta</Text>
+        </View>
 
-      <View style={{ flexDirection: 'row' }}>
-        <Icon
-          style={{ marginLeft: 15, marginRight: 5, top: 114 }}
-          name="person"
-          color="#000"
-          size={35}
-        />
-        <Text>Configuracoes da conta</Text>
-      </View>
+        <SenhaAntiga>
+          <TextInput
+            icon="lock-open"
+            secureTextEntry // não mostra o texto
+            placeholder="Senha atual"
+            returnKeyType="next" // muda o botão de passar adiante do teclado
+            onSubmitEditing={() => senhaRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
+            ref={senhaAntigaRef}
+            value={senhaAntiga}
+            onChangeText={setSenhaAntiga}
+          />
+        </SenhaAntiga>
 
-      <SenhaAntiga>
-        <TextInput
-          icon="lock-open"
-          secureTextEntry // não mostra o texto
-          placeholder="Senha atual"
-          returnKeyType="next" // muda o botão de passar adiante do teclado
-          onSubmitEditing={() => senhaRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
-          ref={senhaAntigaRef}
-          value={senhaAntiga}
-          onChangeText={setSenhaAntiga}
-        />
-      </SenhaAntiga>
+        <Senha>
+          <TextInput
+            icon="lock-outline"
+            secureTextEntry // não mostra o texto
+            placeholder="Nova senha"
+            returnKeyType="next"
+            onSubmitEditing={() => confirmarSenhaRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
+            ref={senhaRef}
+            value={senha}
+            onChangeText={setSenha}
+          />
+        </Senha>
 
-      <Senha>
-        <TextInput
-          icon="lock-outline"
-          secureTextEntry // não mostra o texto
-          placeholder="Nova senha"
-          returnKeyType="next"
-          onSubmitEditing={() => confirmarSenhaRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
-          ref={senhaRef}
-          value={senha}
-          onChangeText={setSenha}
-        />
-      </Senha>
+        <ConfirmarSenha>
+          <TextInput
+            icon="lock"
+            secureTextEntry // não mostra o texto
+            placeholder="Confirmar nova senha"
+            returnKeyType="send"
+            onSubmitEditing={handleSubmit}
+            ref={confirmarSenhaRef}
+            value={confirmarSenha}
+            onChangeText={setConfirmarSenha}
+          />
+        </ConfirmarSenha>
 
-      <ConfirmarSenha>
-        <TextInput
-          icon="lock"
-          secureTextEntry // não mostra o texto
-          placeholder="Confirmar nova senha"
-          returnKeyType="send"
-          ref={confirmarSenhaRef}
-          value={confirmarSenha}
-          onChangeText={setConfirmarSenha}
-        />
-      </ConfirmarSenha>
+        <SairBotao onPress={handleLogout}>
+          <SairTexto>Sair</SairTexto>
+        </SairBotao>
 
-      <SairBotao onPress={handleLogout}>
-        <SairTexto>Sair</SairTexto>
-      </SairBotao>
+        <SalvarBotao onPress={handleSubmit}>
+          <SalvarTexto>Atualizar</SalvarTexto>
+        </SalvarBotao>
 
-      <SalvarBotao onPress={handleSubmit}>
-        <SalvarTexto>Atualizar</SalvarTexto>
-      </SalvarBotao>
-
-      {/* <SalvarBotao
+        {/* <SalvarBotao
         onPress={() =>
           Alert.alert('Alteracoes salvas!', '', [
             {
@@ -187,6 +194,7 @@ export default function Configuracao({ navigation }) {
       >
         <SalvarTexto>Salvar</SalvarTexto>
       </SalvarBotao> */}
-    </Background>
+      </Background>
+    </TouchableWithoutFeedback>
   );
 }

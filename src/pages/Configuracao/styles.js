@@ -5,8 +5,8 @@ import Input from '../../components/Input';
 
 export const Text = styled.Text`
   /* font-family: ROBOTO; */
-  margin-top: 120px;
-  margin-left: 10px;
+  margin-top: 80px;
+  /* margin-left: 5px; */
   font-size: 20px;
   font-weight: bold;
   text-align: left;
@@ -80,7 +80,7 @@ export const ConfirmarSenha = styled.View`
 export const SairBotao = styled.TouchableOpacity`
   width: 150px;
   height: 43px;
-  top: 180px;
+  top: 260px;
   margin-left: 10px;
   align-self: flex-start; /* coloca no meio no sentido horizontal */
   justify-content: center;
@@ -103,7 +103,7 @@ export const SairTexto = styled.Text`
 export const SalvarBotao = styled.TouchableOpacity`
   width: 150px;
   height: 43px;
-  top: 140px;
+  top: 215px;
   margin-left: 230px;
   align-self: flex-start; /* coloca no meio no sentido horizontal */
   justify-content: center;

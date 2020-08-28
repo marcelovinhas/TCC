@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-// import { Alert } from 'react-native';e
+import { Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Background } from '../../components/Background';
@@ -10,8 +10,6 @@ import {
   Easy,
   Nome,
   NomeInput,
-  // Usuario,
-  // UsuarioInput,
   Senha,
   SenhaInput,
   Email,
@@ -22,6 +20,7 @@ import {
   CadastrarTexto,
   CancelarBotao,
   CancelarTexto,
+  CorBotao,
 } from './styles';
 
 export default function Cadastro({ navigation }) {
@@ -45,78 +44,65 @@ export default function Cadastro({ navigation }) {
   }
 
   return (
-    <Background>
-      <Easy>EASY</Easy>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <Background>
+        <Easy>EASY</Easy>
 
-      <Nome>
-        <NomeInput
-          icon="sentiment-satisfied"
-          autoCorrect={false} // não corrige o email automaticamente
-          autoCapitalize="words"
-          placeholder="Nome completo"
-          returnKeyType="next" // muda o botão de passar adiante do teclado
-          onSubmitEditing={() => emailRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
-          value={nome}
-          onChangeText={setNome}
-        />
-      </Nome>
+        <Nome>
+          <NomeInput
+            icon="sentiment-satisfied"
+            autoCorrect={false} // não corrige o email automaticamente
+            autoCapitalize="words"
+            placeholder="Nome completo"
+            returnKeyType="next" // muda o botão de passar adiante do teclado
+            onSubmitEditing={() => emailRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
+            value={nome}
+            onChangeText={setNome}
+          />
+        </Nome>
 
-      {/* <Usuario>
-        <UsuarioInput
-          icon="person-outline"
-          autoCorrect={false} // não corrige o email automaticamente
-          autoCapitalize="none" // não coloca letra maiúscula
-          placeholder="Nome de usuário"
-          returnKeyType="next" // muda o botão de passar adiante do teclado
-          onSubmitEditing={() => emailRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
-          ref={usuarioRef}
-          value={usuario}
-          onChangeText={setUsuario}
-        />
-      </Usuario> */}
+        <Email>
+          <EmailInput
+            icon="mail-outline"
+            keyboardType="email-address" // adiciona @ e .com automaticamente
+            autoCorrect={false} // não corrige o email automaticamente
+            autoCapitalize="none" // não coloca letra maiúscula
+            placeholder="Email"
+            returnKeyType="next" // muda o botão de passar adiante do teclado
+            onSubmitEditing={() => senhaRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
+            ref={emailRef}
+            value={email}
+            onChangeText={setEmail}
+          />
+        </Email>
 
-      <Email>
-        <EmailInput
-          icon="mail-outline"
-          keyboardType="email-address" // adiciona @ e .com automaticamente
-          autoCorrect={false} // não corrige o email automaticamente
-          autoCapitalize="none" // não coloca letra maiúscula
-          placeholder="Email"
-          returnKeyType="next" // muda o botão de passar adiante do teclado
-          onSubmitEditing={() => senhaRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
-          ref={emailRef}
-          value={email}
-          onChangeText={setEmail}
-        />
-      </Email>
+        <Senha>
+          <SenhaInput
+            icon="lock-open"
+            secureTextEntry // não mostra o texto
+            placeholder="Senha"
+            returnKeyType="next"
+            onSubmitEditing={() => confirmarSenhaRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
+            ref={senhaRef}
+            value={senha}
+            onChangeText={setSenha}
+          />
+        </Senha>
 
-      <Senha>
-        <SenhaInput
-          icon="lock-open"
-          secureTextEntry // não mostra o texto
-          placeholder="Senha"
-          returnKeyType="next"
-          onSubmitEditing={() => confirmarSenhaRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
-          ref={senhaRef}
-          value={senha}
-          onChangeText={setSenha}
-        />
-      </Senha>
+        <ConfirmarSenha>
+          <ConfirmarSenhaInput
+            icon="lock-outline"
+            secureTextEntry // não mostra o texto
+            placeholder="Repetir senha"
+            returnKeyType="send"
+            onSubmitEditing={handleSubmit}
+            ref={confirmarSenhaRef}
+            value={confirmarSenha}
+            onChangeText={setConfirmarSenha}
+          />
+        </ConfirmarSenha>
 
-      <ConfirmarSenha>
-        <ConfirmarSenhaInput
-          icon="lock-outline"
-          secureTextEntry // não mostra o texto
-          placeholder="Repetir senha"
-          returnKeyType="send"
-          onSubmitEditing={handleSubmit}
-          ref={confirmarSenhaRef}
-          value={confirmarSenha}
-          onChangeText={setConfirmarSenha}
-        />
-      </ConfirmarSenha>
-
-      {/* <CadastrarBotao
+        {/* <CadastrarBotao
         onPress={() =>
           Alert.alert('Cadastro realizado.', 'Bem vindo!', [
             {
@@ -129,13 +115,16 @@ export default function Cadastro({ navigation }) {
         <CadastrarTexto>Cadastrar</CadastrarTexto>
       </CadastrarBotao> */}
 
-      <CadastrarBotao loading={loading} onPress={handleSubmit}>
-        <CadastrarTexto>Cadastrar</CadastrarTexto>
-      </CadastrarBotao>
+        <CadastrarBotao loading={loading} onPress={handleSubmit}>
+          <CorBotao>
+            <CadastrarTexto>Cadastrar</CadastrarTexto>
+          </CorBotao>
+        </CadastrarBotao>
 
-      <CancelarBotao onPress={() => navigation.navigate('Login')}>
-        <CancelarTexto>Voltar</CancelarTexto>
-      </CancelarBotao>
-    </Background>
+        <CancelarBotao onPress={() => navigation.navigate('Login')}>
+          <CancelarTexto>Voltar</CancelarTexto>
+        </CancelarBotao>
+      </Background>
+    </TouchableWithoutFeedback>
   );
 }
