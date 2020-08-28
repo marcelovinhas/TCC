@@ -4,6 +4,7 @@ import { Background } from '../../components/Background';
 
 import {
   Text,
+  Easy,
   EventosBotao,
   CalendarioBotao,
   AdicionarBotao,
@@ -15,6 +16,7 @@ import {
 export default function Inicial({ navigation }) {
   return (
     <Background>
+      <Easy>EASY</Easy>
       <EventosBotao onPress={() => navigation.navigate('Eventos')}>
         <Text>Próximos Eventos</Text>
       </EventosBotao>

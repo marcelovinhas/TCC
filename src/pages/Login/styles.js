@@ -1,20 +1,20 @@
 import styled from 'styled-components/native';
-import { RectButton } from 'react-native-gesture-handler'; // RectButton é para botão retangular
+import LinearGradient from 'react-native-linear-gradient';
 
-import Button from '../../components/Button';
+// import Button from '../../components/Button';
 import Input from '../../components/Input';
 
 export const Easy = styled.Text`
   position: absolute;
   width: 330px;
   height: 66px;
-  left: 16px;
-  top: 80px;
+  left: 20px;
+  top: 90px;
 
-  font-family: Arial Bold;
-  font-weight: bold;
-  font-size: 36px;
-  line-height: 42px;
+  font-family: 'RobotoSlab-Regular';
+  /* font-weight: bold; */
+  font-size: 50px;
+  line-height: 50px;
   display: flex;
   align-items: center;
   text-align: center;
@@ -28,7 +28,7 @@ export const Usuario = styled.View`
   width: 330px;
   height: 40px;
   left: 16px;
-  top: 153px;
+  top: 190px;
   border-bottom-width: 1px;
   border-color: #000000;
   flex-direction: row;
@@ -37,15 +37,10 @@ export const Usuario = styled.View`
 
 export const UsuarioInput = styled(Input)`
   font-family: Arial Bold;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 16px;
   display: flex;
   align-items: center;
-  padding: 0px 10px;
+  padding: 0px 5px;
   flex: 1;
-  letter-spacing: 1.6px;
 `;
 
 export const Senha = styled.View`
@@ -61,28 +56,29 @@ export const Senha = styled.View`
 
 export const SenhaInput = styled(Input)`
   font-family: Arial Bold;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 16px;
   display: flex;
   align-items: center;
-  padding: 0px 10px;
+  padding: 0px 5px;
   flex: 1;
-  letter-spacing: 1.6px;
+`;
+
+export const CorBotao = styled(LinearGradient).attrs({
+  colors: ['#5671cf', '#133DD0'],
+})`
+  justify-content: center;
+  flex: 1;
 `;
 
 export const EntrarBotao = styled.TouchableOpacity`
   width: 270px;
   height: 43px;
-  left: 60px;
   top: 300px;
-  align-items: center;
+  align-self: center; /* coloca no meio no sentido horizontal */
   justify-content: center;
 
-  background: #5671cf;
-  border: 1px solid #384759;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  /* background: #5671cf; */
+  border: 2px solid #333333;
+
   border-radius: 5px;
 `;
 
@@ -91,9 +87,9 @@ export const EntrarTexto = styled.Text`
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
-  line-height: 21px;
+  /* line-height: 35px; */
   display: flex;
-  align-items: center;
+  align-self: center;
   text-align: center;
   letter-spacing: 1.8px;
 
@@ -103,7 +99,7 @@ export const EntrarTexto = styled.Text`
 export const EsqueciBotao = styled.TouchableOpacity`
   width: 332px;
   height: 23px;
-  left: 25px;
+  align-self: center; /* coloca no meio no sentido horizontal */
   top: 315px;
 `;
 
@@ -117,15 +113,15 @@ export const EsqueciTexto = styled.Text`
   align-items: center;
   text-align: center;
   letter-spacing: 1.4px;
-  color: #5676a6;
+  color: #5671cf;
 `;
 
 export const ContaBotao = styled.TouchableOpacity`
   width: 360px;
   height: 86px;
-  left: 30px;
-  top: 493px;
-  flex-direction: row;
+  align-self: center; /* coloca no meio no sentido horizontal */
+  top: 450px;
+  /* flex-direction: row; */
 `;
 
 export const ContaTexto = styled.Text`
@@ -142,7 +138,6 @@ export const ContaTexto = styled.Text`
 `;
 
 export const CadastreTexto = styled.Text`
-  left: 10px;
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;

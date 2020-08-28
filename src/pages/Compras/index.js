@@ -1,12 +1,147 @@
-import React from 'react';
-import { Text } from 'react-native';
-
+import React, { useState, useCallback } from 'react';
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  FlatList,
+  Modal,
+  TextInput,
+} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import TaskList from '../../components/TaskList';
 import { Background } from '../../components/Background';
+import { Caixa, styles } from './styles';
 
-export default function Compras() {
+export default function Compras({ navigation }) {
+  const [task, setTask] = useState([
+    { key: 1, task: 'Arroz', contador: '1', preco: '' },
+    { key: 2, task: 'Macarrao', contador: '2', preco: '' },
+    { key: 3, task: 'Farinha', contador: '3', preco: '' },
+  ]);
+  const [open, setOpen] = useState(false);
+  const [input, setInput] = useState('');
+  const [input2, setInput2] = useState('');
+  // const [total, setTotal] = useState(0);
+
+  function handleAdd() {
+    if (input === '') return;
+    if (input2 === '') return;
+
+    const data = {
+      key: input,
+      task: input,
+      contador: input2,
+      preco,
+    };
+
+    setTask([...task, data]);
+    setOpen(false);
+    setInput('');
+    setInput2('');
+  }
+
+  const handleDelete = useCallback((data) => {
+    const find = task.filter((r) => r.key !== data.key);
+    setTask(find);
+  });
+
   return (
     <Background>
-      <Text>TELA DE COMPRAS</Text>
+      <Caixa>
+        <View style={styles.superiorHeader}>
+          <Text style={styles.superiorTitle}>Lista de compras</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Inicial')}>
+            <Icon
+              style={{ marginLeft: 130, marginRight: 5, marginTop: 20 }}
+              name="home"
+              color="#FFF"
+              size={40}
+              // style={{height:60,width:60}}
+            />
+          </TouchableOpacity>
+        </View>
+      </Caixa>
+
+      <View style={styles.content}>
+        <Text style={styles.title}>O que preciso comprar?</Text>
+      </View>
+
+      <FlatList
+        // numColumns={2}
+        marginHorizontal={10}
+        showsHorizontalScrollIndicator={false} // desabilita a barrinha de rolagem do lado
+        data={task} // vao todos os dados da lista
+        keyExtractor={(item) => String(item.key)} // chave para organizar
+        renderItem={({ item }) => (
+          <TaskList data={item} handLeDelete={handleDelete} />
+        )} // renderiza item por item ate a lista acabar
+      />
+
+      <Modal animationType="slide" transparent={false} visible={open}>
+        <View style={styles.modalHeader}>
+          <TouchableOpacity onPress={() => setOpen(false)}>
+            <Icon
+              style={{ marginLeft: 5, marginRight: 5 }}
+              name="reply"
+              color="#000"
+              size={40}
+              // style={{height:60,width:60}}
+            />
+          </TouchableOpacity>
+          <Text style={styles.modalTitle}>Novo Item</Text>
+        </View>
+
+        <View style={styles.modalBody}>
+          <TextInput
+            multiline // faz quebra de linha no texto
+            placeholderTextColor="#747474"
+            autoCorrect={false}
+            placeholder="Add Item"
+            style={styles.input}
+            value={input}
+            onChangeText={(texto) => setInput(texto)}
+          />
+          <TextInput
+            multiline // faz quebra de linha no texto
+            placeholderTextColor="#747474"
+            autoCorrect={false}
+            placeholder="Quantidade"
+            keyboardType="numeric"
+            style={styles.input2}
+            value={input2}
+            onChangeText={(texto2) => setInput2(texto2)}
+          />
+
+          <TouchableOpacity style={styles.handleAdd} onPress={handleAdd}>
+            <Text style={styles.handleAddText}>Adicionar</Text>
+          </TouchableOpacity>
+        </View>
+      </Modal>
+
+      <View style={styles.fixos}>
+        <Text style={{ color: '#000', fontSize: 20, paddingLeft: 8 }}>R$</Text>
+        <Text
+          style={{
+            color: '#000',
+            fontSize: 20,
+            paddingLeft: 8,
+            paddingRight: 8,
+          }}
+        >
+          Total
+        </Text>
+      </View>
+
+      <TouchableOpacity style={styles.fab}>
+        <Icon
+          name="add-circle"
+          color="#000"
+          size={60}
+          onPress={() => setOpen(true)}
+          // style={{height:60,width:60}}
+        />
+      </TouchableOpacity>
     </Background>
   );
 }

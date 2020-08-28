@@ -12,11 +12,10 @@ export const TInput = styled.TextInput.attrs({
   placeholderTextColor:
     '#57545e' /* cor do que está escrito dentro da caixa, poderia estar no index.js */,
 })`
-  font-family: Arial Bold;
-  font-style: normal;
+  /* font-family: Arial Bold; */
   font-weight: bold;
-  font-size: 14px;
-  line-height: 16px;
+  font-size: 18px;
+  /* line-height: 16px; */
   display: flex;
   align-items: center;
   padding: 0px 10px;
