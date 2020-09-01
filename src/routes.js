@@ -17,6 +17,7 @@ import Compras from './pages/Compras';
 import Despensa from './pages/Despensa';
 import Configuracao from './pages/Configuracao';
 import NovoItem from './pages/NovoItem';
+import RedefinirSenha from './pages/RedefinirSenha';
 
 const Stack = createStackNavigator();
 // const Drawer = createDrawerNavigator();
@@ -45,6 +46,7 @@ export default function Routes() {
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Esqueci" component={Esqueci} />
             <Stack.Screen name="Cadastro" component={Cadastro} />
+            <Stack.Screen name="RedefinirSenha" component={RedefinirSenha} />
           </>
         </Stack.Navigator>
       )}
