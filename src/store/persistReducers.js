@@ -6,7 +6,7 @@ export default (reducers) => {
     {
       key: 'tcc',
       storage: AsyncStorage,
-      whitelist: ['auth', 'usuario'],
+      whitelist: ['auth', 'usuario', 'senha'],
     },
     reducers
   );

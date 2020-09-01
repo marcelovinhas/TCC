@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { Keyboard, TouchableWithoutFeedback, Alert } from 'react-native';
+import { Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { useDispatch } from 'react-redux';
+
+import { Background } from '../../components/Background';
+
+import { forgotPasswordRequest } from '../../store/modules/senha/actions';
+
 import {
   Text,
   Usuario,
@@ -16,10 +22,16 @@ import {
   CorBotao,
 } from './styles';
 
-import { Background } from '../../components/Background';
-
 export default function Esqueci({ navigation }) {
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState('');
+
+  // const loading = useSelector((state) => state.auth.loading);
+
+  function handleSubmit() {
+    dispatch(forgotPasswordRequest(email));
+  }
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -36,13 +48,13 @@ export default function Esqueci({ navigation }) {
             autoCapitalize="none" // não coloca letra maiúscula
             placeholder="Email"
             returnKeyType="next" // muda o botão de passar adiante do teclado
-            // onSubmitEditing={() => passwordRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
+            onSubmitEditing={handleSubmit}
             value={email}
             onChangeText={setEmail}
           />
         </Usuario>
 
-        <EnviarBotao
+        {/* <EnviarBotao
           onPress={() =>
             Alert.alert('Senha enviada!', '', [
               {
@@ -51,7 +63,8 @@ export default function Esqueci({ navigation }) {
               },
             ])
           }
-        >
+        > */}
+        <EnviarBotao onPress={handleSubmit}>
           <CorBotao>
             <EnviarTexto>Enviar link para login</EnviarTexto>
           </CorBotao>
@@ -61,8 +74,8 @@ export default function Esqueci({ navigation }) {
         <LinhaDireita />
         <Ou>OU</Ou>
 
-        <CriarBotao onPress={() => navigation.navigate('Cadastro')}>
-          <CriarTexto>Criar nova conta</CriarTexto>
+        <CriarBotao onPress={() => navigation.navigate('RedefinirSenha')}>
+          <CriarTexto>Redefinir senha</CriarTexto>
         </CriarBotao>
 
         <LoginBotao onPress={() => navigation.navigate('Login')}>
