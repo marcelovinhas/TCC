@@ -19,18 +19,21 @@ export function* forgotPassword({ payload }) {
       email,
     });
 
-    if (!email) {
-      Alert.alert('email não existe', 'Esse e-mail não existe');
-      return;
-    }
+    // if (!email) {
+    //   Alert.alert('Email não existe', 'Esse e-mail não existe');
+    //   return;
+    // }
 
     yield put(forgotPasswordSuccess(email));
     Alert.alert(
-      'E-mail enviado!',
-      'Verifique seu e-mail para alterar sua senha'
+      'Email enviado!',
+      'Acesse seu email e use o código enviado para redefinir sua senha.'
     );
   } catch (err) {
-    Alert.alert('Falha no envio', 'Falha no envio do e-mail, tente novamente');
+    Alert.alert(
+      'Verifique o email digitado!',
+      'Não há conta cadastrada com esse email.'
+    );
     yield put(forgotPasswordFailure());
   }
 }
@@ -49,9 +52,12 @@ export function* resetPassword({ payload }) {
     yield put(resetPasswordSuccess(email, token, senha, confirmarSenha));
 
     // history.push('/');
-    Alert.alert('Senha alterada!', 'Senha alterada! Faça login');
+    Alert.alert('Senha alterada!', 'Volte a tela de login e acesse sua conta');
   } catch (err) {
-    Alert.alert('Falha', 'Falha, verifique seus dados!');
+    Alert.alert(
+      'Erro ao atualizar senha!',
+      'Verifique seu email, código e se as senhas coincidem.'
+    );
 
     yield put(resetPasswordFailure());
   }

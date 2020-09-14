@@ -12,23 +12,23 @@ export const Text = styled.Text`
   letter-spacing: 1.6px;
 `;
 
-export const Email = styled.View`
-  width: 330px;
-  height: 40px;
-  margin-left: 16px;
-  margin-top: 50px;
-  border-bottom-width: 1px;
-  border-color: #000000;
-  flex-direction: row;
-  align-items: center;
-  font-size: 60px;
-`;
-
 export const InputConta = styled(Input)`
   display: flex;
   align-items: center;
   padding: 0px 5px;
   flex: 1;
+`;
+
+export const Email = styled.View`
+  width: 330px;
+  height: 40px;
+  margin-left: 16px;
+  margin-top: 25px;
+  border-bottom-width: 1px;
+  border-color: #000000;
+  flex-direction: row;
+  align-items: center;
+  font-size: 60px;
 `;
 
 export const Token = styled.View`

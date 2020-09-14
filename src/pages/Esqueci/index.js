@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { Keyboard, TouchableWithoutFeedback, Alert } from 'react-native';
 import { useDispatch } from 'react-redux';
 
 import { Background } from '../../components/Background';

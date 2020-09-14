@@ -14,17 +14,17 @@ import { resetPasswordRequest } from '../../store/modules/senha/actions';
 import {
   Text,
   Email,
-  EnviarBotao,
+  InputConta,
+  Token,
+  Senha,
+  ConfirmarSenha,
   CorBotao,
+  EnviarBotao,
   EnviarTexto,
   CriarBotao,
   CriarTexto,
   LoginBotao,
   LoginTexto,
-  Token,
-  InputConta,
-  Senha,
-  ConfirmarSenha,
 } from './styles';
 
 export default function RedefinirSenha({ navigation }) {
@@ -51,7 +51,8 @@ export default function RedefinirSenha({ navigation }) {
         <Text>Esqueceu sua senha?</Text>
 
         <Text>
-          Utilize o token enviado para seu email para redefinir sua senha.
+          Utilize o código de confirmação enviado para seu email para redefinir
+          sua senha.
         </Text>
 
         <Email>
@@ -71,7 +72,7 @@ export default function RedefinirSenha({ navigation }) {
         <Token>
           <InputConta
             icon="lock-open"
-            placeholder="Token"
+            placeholder="Código de confirmação"
             returnKeyType="next"
             onSubmitEditing={() => senhaRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
             ref={tokenRef}
