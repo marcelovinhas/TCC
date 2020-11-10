@@ -80,6 +80,7 @@ export default function Cadastro({ navigation }) {
           <SenhaInput
             icon="lock-open"
             secureTextEntry // não mostra o texto
+            autoCapitalize="none" // não coloca letra maiúscula
             placeholder="Senha"
             returnKeyType="next"
             onSubmitEditing={() => confirmarSenhaRef.current.focus()} // após clicar, já vai com o teclado aberto pro prox
@@ -93,6 +94,7 @@ export default function Cadastro({ navigation }) {
           <ConfirmarSenhaInput
             icon="lock-outline"
             secureTextEntry // não mostra o texto
+            autoCapitalize="none" // não coloca letra maiúscula
             placeholder="Repetir senha"
             returnKeyType="send"
             onSubmitEditing={handleSubmit}

@@ -18,11 +18,11 @@ export default function Inicial({ navigation }) {
     <Background>
       <Easy>EASY</Easy>
       <EventosBotao onPress={() => navigation.navigate('Eventos')}>
-        <Text>Próximos Eventos</Text>
+        <Text>Agenda</Text>
       </EventosBotao>
 
       <CalendarioBotao onPress={() => navigation.navigate('Calendario')}>
-        <Text style={{ fontFamily: 'ROBOTO-ITALIC' }}>Calendário</Text>
+        <Text style={{ fontFamily: 'ROBOTO-ITALIC' }}>Agendar Compromisso</Text>
       </CalendarioBotao>
 
       <AdicionarBotao onPress={() => navigation.navigate('Adicionar')}>

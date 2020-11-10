@@ -18,6 +18,8 @@ import Despensa from './pages/Despensa';
 import Configuracao from './pages/Configuracao';
 import NovoItem from './pages/NovoItem';
 import RedefinirSenha from './pages/RedefinirSenha';
+import Horario from './pages/Horario';
+import Confirmar from './pages/Confirmar';
 
 const Stack = createStackNavigator();
 // const Drawer = createDrawerNavigator();
@@ -29,7 +31,7 @@ export default function Routes() {
     <NavigationContainer>
       <StatusBar barStyle="light-content" backgroundColor="#000000" />
       {signed ? (
-        <Stack.Navigator headerMode="none" initialRouteName="Login">
+        <Stack.Navigator headerMode="none" initialRouteName="Inicial">
           <Stack.Screen name="Inicial" component={Inicial} />
           <Stack.Screen name="Eventos" component={Eventos} />
           <Stack.Screen name="Calendario" component={Calendario} />
@@ -38,7 +40,8 @@ export default function Routes() {
           <Stack.Screen name="Despensa" component={Despensa} />
           <Stack.Screen name="Configuracao" component={Configuracao} />
           <Stack.Screen name="NovoItem" component={NovoItem} />
-          {/* <Stack.Screen name="Login" component={Login} /> */}
+          <Stack.Screen name="Horario" component={Horario} />
+          <Stack.Screen name="Confirmar" component={Confirmar} />
         </Stack.Navigator>
       ) : (
         <Stack.Navigator headerMode="none">

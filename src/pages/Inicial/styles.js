@@ -2,9 +2,8 @@ import styled from 'styled-components/native';
 
 export const Text = styled.Text`
   /* font-family: ROBOTO; */
-  font-size: 18px;
+  font-size: 17px;
   line-height: 21px;
-
   align-items: center;
   text-align: center;
   letter-spacing: 1.8px;
