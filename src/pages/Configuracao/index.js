@@ -30,6 +30,7 @@ import {
   SenhaAntiga,
 } from './styles';
 
+
 export default function Configuracao({ navigation }) {
   const dispatch = useDispatch();
   const profile = useSelector((state) => state.usuario.profile);
