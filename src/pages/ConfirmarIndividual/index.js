@@ -17,7 +17,7 @@ import {
   CorBotao,
 } from './styles';
 
-export default function Confirmar({ route, navigation }) {
+export default function ConfirmarIndividual({ route, navigation }) {
   const { amigo, time, assunto } = route.params;
 
   const dateFormatted = useMemo(
@@ -26,7 +26,7 @@ export default function Confirmar({ route, navigation }) {
   );
 
   async function handleAddAppointment() {
-    await api.post('compromissos', {
+    await api.post('compromissossozinho', {
       amigo_id: amigo.id.toString(),
       data: time,
       assunto,

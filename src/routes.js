@@ -11,8 +11,8 @@ import Inicial from './pages/Inicial';
 import Esqueci from './pages/Esqueci';
 import Cadastro from './pages/Cadastro';
 import Eventos from './pages/Eventos';
-import Calendario from './pages/Calendario';
-import Adicionar from './pages/Adicionar';
+import Compromisso from './pages/Compromisso';
+import Individual from './pages/Individual';
 import Compras from './pages/Compras';
 import Despensa from './pages/Despensa';
 import Configuracao from './pages/Configuracao';
@@ -20,6 +20,8 @@ import NovoItem from './pages/NovoItem';
 import RedefinirSenha from './pages/RedefinirSenha';
 import Horario from './pages/Horario';
 import Confirmar from './pages/Confirmar';
+import HorarioIndividual from './pages/HorarioIndividual';
+import ConfirmarIndividual from './pages/ConfirmarIndividual';
 
 const Stack = createStackNavigator();
 // const Drawer = createDrawerNavigator();
@@ -34,14 +36,16 @@ export default function Routes() {
         <Stack.Navigator headerMode="none" initialRouteName="Inicial">
           <Stack.Screen name="Inicial" component={Inicial} />
           <Stack.Screen name="Eventos" component={Eventos} />
-          <Stack.Screen name="Calendario" component={Calendario} />
-          <Stack.Screen name="Adicionar" component={Adicionar} />
+          <Stack.Screen name="Compromisso" component={Compromisso} />
+          <Stack.Screen name="Individual" component={Individual} />
           <Stack.Screen name="Compras" component={Compras} />
           <Stack.Screen name="Despensa" component={Despensa} />
           <Stack.Screen name="Configuracao" component={Configuracao} />
           <Stack.Screen name="NovoItem" component={NovoItem} />
           <Stack.Screen name="Horario" component={Horario} />
           <Stack.Screen name="Confirmar" component={Confirmar} />
+          <Stack.Screen name="HorarioIndividual" component={HorarioIndividual} />
+          <Stack.Screen name="ConfirmarIndividual" component={ConfirmarIndividual} />
         </Stack.Navigator>
       ) : (
         <Stack.Navigator headerMode="none">

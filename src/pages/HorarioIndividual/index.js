@@ -15,7 +15,7 @@ import {
   CompromissoInput,
 } from './styles';
 
-export default function Horario({ route, navigation }) {
+export default function HorarioIndividual({ route, navigation }) {
   const [date, setDate] = useState(new Date());
   const [hours, setHours] = useState([]);
   const [assunto, setAssunto] = useState('');
@@ -37,7 +37,7 @@ export default function Horario({ route, navigation }) {
   }, [date, amigo.id]);
 
   function handleConfirmar(time) {
-    navigation.navigate('Confirmar', {
+    navigation.navigate('ConfirmarIndividual', {
       amigo,
       time,
       assunto,

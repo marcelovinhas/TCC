@@ -21,12 +21,14 @@ export default function Inicial({ navigation }) {
         <Text>Agenda</Text>
       </EventosBotao>
 
-      <CalendarioBotao onPress={() => navigation.navigate('Calendario')}>
-        <Text style={{ fontFamily: 'ROBOTO-ITALIC' }}>Agendar Compromisso</Text>
+      <CalendarioBotao onPress={() => navigation.navigate('Compromisso')}>
+        <Text style={{ fontFamily: 'ROBOTO-ITALIC' }}>
+          Compromisso com usuários
+        </Text>
       </CalendarioBotao>
 
-      <AdicionarBotao onPress={() => navigation.navigate('Adicionar')}>
-        <Text>Adicionar Evento</Text>
+      <AdicionarBotao onPress={() => navigation.navigate('Individual')}>
+        <Text>Compromisso individual</Text>
       </AdicionarBotao>
 
       <ComprasBotao onPress={() => navigation.navigate('Compras')}>
