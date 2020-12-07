@@ -9,7 +9,7 @@ export const Caixa = styled.View`
   margin-top: 0px;
   /*margin-bottom: 400px; */
   position: absolute;
-  width: 400px;
+  width: 415px;
   height: 70px;
   align-self: center;
   /*margin: 80px 0px 400px;*/

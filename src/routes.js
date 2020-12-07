@@ -44,8 +44,14 @@ export default function Routes() {
           <Stack.Screen name="NovoItem" component={NovoItem} />
           <Stack.Screen name="Horario" component={Horario} />
           <Stack.Screen name="Confirmar" component={Confirmar} />
-          <Stack.Screen name="HorarioIndividual" component={HorarioIndividual} />
-          <Stack.Screen name="ConfirmarIndividual" component={ConfirmarIndividual} />
+          <Stack.Screen
+            name="HorarioIndividual"
+            component={HorarioIndividual}
+          />
+          <Stack.Screen
+            name="ConfirmarIndividual"
+            component={ConfirmarIndividual}
+          />
         </Stack.Navigator>
       ) : (
         <Stack.Navigator headerMode="none">

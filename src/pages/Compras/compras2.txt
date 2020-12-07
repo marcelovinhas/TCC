@@ -108,9 +108,7 @@ export default function Compras({ navigation }) {
               justifyContent: 'flex-end',
             }}
           >
-            <TextInput style={{ color: '#121212', fontSize: 20 }}>
-              3 kg
-            </TextInput>
+            <TextInput style={{ color: '#121212', fontSize: 20 }}>3 kg</TextInput>
           </View>
         </View>
         <View

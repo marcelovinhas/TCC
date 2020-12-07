@@ -30,7 +30,6 @@ import {
   SenhaAntiga,
 } from './styles';
 
-
 export default function Configuracao({ navigation }) {
   const dispatch = useDispatch();
   const profile = useSelector((state) => state.usuario.profile);
@@ -76,10 +75,10 @@ export default function Configuracao({ navigation }) {
       <Background>
         <Caixa>
           <View style={styles.superiorHeader}>
-            <Text style={styles.superiorTitle}>Configuracoes</Text>
+            <Text style={styles.superiorTitle}>Configurações</Text>
             <TouchableOpacity onPress={() => navigation.navigate('Inicial')}>
               <Icon
-                style={{ marginLeft: 150, marginRight: 5, marginTop: 20 }}
+                style={{ marginLeft: 140, marginRight: 5, marginTop: 20 }}
                 name="home"
                 color="#FFF"
                 size={40}

@@ -127,7 +127,7 @@ export const Caixa = styled.View`
   margin-top: 0px;
   /*margin-bottom: 400px; */
   position: absolute;
-  width: 400px;
+  width: 415px;
   height: 70px;
   align-self: center;
   /*margin: 80px 0px 400px;*/
@@ -138,14 +138,9 @@ export const Caixa = styled.View`
 
 export const styles = StyleSheet.create({
   superiorTitle: {
-    // backgroundColor: '#dae2ed',
     marginTop: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
     marginLeft: 10,
     marginRight: 10,
-    height: 40,
-    borderRadius: 5,
     color: '#FFF',
     fontSize: 25,
   },

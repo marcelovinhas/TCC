@@ -15,7 +15,7 @@ export const Easy = styled.Text`
   position: absolute;
   width: 330px;
   height: 66px;
-  left: 20px;
+  left: 30px;
   top: 90px;
 
   font-family: 'RobotoSlab-Regular';

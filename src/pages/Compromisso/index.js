@@ -36,7 +36,7 @@ export default function Calendario({ navigation }) {
           <Text style={styles.superiorTitle}>Agendar Compromisso</Text>
           <TouchableOpacity onPress={() => navigation.navigate('Inicial')}>
             <Icon
-              style={{ marginLeft: 70, marginRight: 5, marginTop: 20 }}
+              style={{ marginLeft: 55, marginRight: 5, marginTop: 20 }}
               name="home"
               color="#FFF"
               size={40}
@@ -62,26 +62,10 @@ export default function Calendario({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#171d31',
-  },
-  title: {
-    marginTop: 100,
-    paddingBottom: 10,
-    fontSize: 25,
-    textAlign: 'center',
-    color: '#000',
-  },
   superiorTitle: {
-    // backgroundColor: '#dae2ed',
     marginTop: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
     marginLeft: 10,
     marginRight: 10,
-    height: 40,
-    borderRadius: 5,
     color: '#FFF',
     fontSize: 25,
   },
